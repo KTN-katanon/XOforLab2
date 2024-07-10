@@ -9,7 +9,7 @@ package com.katanon.xo_lab2;
  */
 import java.util.*;
 
-public class XO_Lab2 {
+public class XOLab2 {
 
     private final static int SIZE = 3;
     private static char[][] board = new char[SIZE][SIZE];
@@ -17,18 +17,23 @@ public class XO_Lab2 {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        printWelcome();
-        createBoard();
         while (true) {
-            printBoard();
-            printTurn();
-            move();
-            if (results()) {
+
+            printWelcome();
+            createBoard();
+            while (true) {
                 printBoard();
+                printTurn();
+                move();
+                if (results()) {
+                    break;
+                }
+                swapTurn();
+            }
+            if (!playAgain()) {
+                System.out.println("Thanks for playing!");
                 break;
             }
-            swapTurn();
-
         }
     }
 
@@ -133,5 +138,15 @@ public class XO_Lab2 {
         }
         return false;
     }
-    
+
+    private static boolean playAgain() {
+        System.out.println("Do you want to play again? (y/n, other to no): ");
+        String play = sc.next().trim().toLowerCase();
+        if (play.equals("yes") || play.equals("y")) {
+            currentPlayer = 'X';
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
