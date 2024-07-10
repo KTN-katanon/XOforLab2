@@ -23,7 +23,12 @@ public class XO_Lab2 {
             printBoard();
             printTurn();
             move();
+            if (results()) {
+                printBoard();
+                break;
+            }
             swapTurn();
+
         }
     }
 
@@ -54,18 +59,24 @@ public class XO_Lab2 {
 
     private static void move() {
         while (true) {
-            System.out.print("Please input row,col: ");
-            int row = sc.nextInt();
-            int col = sc.nextInt();
-            //check error
-            if (row <= 0 || row > SIZE || col <= 0 || col > SIZE) {
-                System.out.println("This position is outside of the board!");
-            } else if (board[row - 1][col - 1] != '-') {
-                System.out.println("Player is already in that spot!");
-                // add player symbol to board
-            } else {
-                board[row - 1][col - 1] = currentPlayer;
-                break;
+            try {
+                System.out.print("Please input row,col: ");
+                int row = sc.nextInt();
+                int col = sc.nextInt();
+
+                // Check for errors
+                if (row <= 0 || row > SIZE || col <= 0 || col > SIZE) {
+                    System.out.println("This position is outside of the board!");
+                } else if (board[row - 1][col - 1] != '-') {
+                    System.out.println("Player is already in that spot!");
+                } else {
+                    // Add player symbol to the board
+                    board[row - 1][col - 1] = currentPlayer;
+                    break;
+                }
+            } catch (InputMismatchException exception) {
+                System.out.println("Invalid input! Please input integers!");
+                sc.next(); // Clear the invalid input
             }
         }
     }
@@ -122,5 +133,5 @@ public class XO_Lab2 {
         }
         return false;
     }
-
+    
 }
