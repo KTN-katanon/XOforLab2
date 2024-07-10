@@ -40,5 +40,9 @@ public class XO_Lab2 {
             System.out.println();
         }
     }
+    
+    private static void printTurn() {
+        System.out.println("Turn " + currentPlayer);
+    }
 
 }
