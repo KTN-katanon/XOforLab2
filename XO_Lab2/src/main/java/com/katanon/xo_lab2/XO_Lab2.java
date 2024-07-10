@@ -110,4 +110,17 @@ public class XO_Lab2 {
         return true;
     }
 
+    public static boolean results() {
+        if (checkWinner()) {
+            printBoard();
+            System.out.println("Player " + currentPlayer + " win!!!");
+            return true;
+        } else if (checkDraw()) {
+            printBoard();
+            System.out.println("Draw!!!");
+            return true;
+        }
+        return false;
+    }
+
 }
