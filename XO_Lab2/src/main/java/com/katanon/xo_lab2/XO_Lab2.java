@@ -21,4 +21,12 @@ public class XO_Lab2 {
     private static void printWelcome(){
         System.out.println("Welcome to XO");
     }
+    
+    private static void createBoard() {
+        for (int i = 0; i < SIZE; i++){
+            for (int j = 0; k < SIZE; j++){
+                board[i][j] = '-';
+            }
+        }
+    }
 }
