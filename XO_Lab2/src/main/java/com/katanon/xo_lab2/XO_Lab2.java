@@ -44,5 +44,23 @@ public class XO_Lab2 {
     private static void printTurn() {
         System.out.println("Turn " + currentPlayer);
     }
+    
+    private static void move() {
+        while (true) {
+            System.out.print("Please input rol,col: ");
+            int row = sc.nextInt();
+            int col = sc.nextInt();
+            //check error
+            if (row <= 0 || row > SIZE || col <= 0 || col > SIZE) {
+                System.out.println("This position is outside of the board!");
+            } else if (board[row - 1][col - 1] != '-') {
+                System.out.println("Player is already in that spot!");
+            // add player symbol to board
+            } else {
+                board[row - 1][col - 1] = currentPlayer;
+                break;
+            }
+        }
+    }
 
 }
