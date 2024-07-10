@@ -18,6 +18,13 @@ public class XO_Lab2 {
 
     public static void main(String[] args) {
         printWelcome();
+        createBoard();
+        while (true) {
+            printBoard();
+            printTurn();
+            move();
+            swapTurn();
+        }
     }
 
     private static void printWelcome() {
@@ -26,7 +33,7 @@ public class XO_Lab2 {
 
     private static void createBoard() {
         for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; k < SIZE; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 board[i][j] = '-';
             }
         }
@@ -47,7 +54,7 @@ public class XO_Lab2 {
 
     private static void move() {
         while (true) {
-            System.out.print("Please input rol,col: ");
+            System.out.print("Please input row,col: ");
             int row = sc.nextInt();
             int col = sc.nextInt();
             //check error
